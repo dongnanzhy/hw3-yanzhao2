@@ -21,7 +21,11 @@ import edu.cmu.lti.f14.hw3.hw3_yanzhao2.typesystems.Document;
 import edu.cmu.lti.f14.hw3.hw3_yanzhao2.typesystems.Token;
 import edu.cmu.lti.f14.hw3.hw3_yanzhao2.utils.Utils;
 
-
+/** Compute MRR
+ * 
+ * @author Yan Zhao
+ * @version 2.0 October, 2014.
+ */
 public class RetrievalEvaluator extends CasConsumer_ImplBase {
 
 	/** query id number **/
@@ -77,6 +81,7 @@ public class RetrievalEvaluator extends CasConsumer_ImplBase {
 	/**
 	 * Construct the global word dictionary. Keep the word
 	 * frequency for each sentence
+	 * @param aCas
 	 */
 	@Override
 	public void processCas(CAS aCas) throws ResourceProcessException {
@@ -151,7 +156,8 @@ public class RetrievalEvaluator extends CasConsumer_ImplBase {
 	}
 
 	/**
-	 * 
+	 * @param queryVector 
+	 * @param docVector
 	 * @return cosine_similarity
 	 */
 	private double computeCosineSimilarity(Map<String, Integer> queryVector,
@@ -182,7 +188,8 @@ public class RetrievalEvaluator extends CasConsumer_ImplBase {
 	}
 
 	 /**
-   * 
+   * @param queryVector 
+   * @param docVector
    * @return jaccard_similarity
    */
   private double computeJaccardSimilarity(Map<String, Integer> queryVector,
@@ -214,7 +221,8 @@ public class RetrievalEvaluator extends CasConsumer_ImplBase {
   }
   
   /**
-  * 
+  * @param queryVector 
+  * @param docVector
   * @return dice_similarity
   */
  private double computeDiceSimilarity(Map<String, Integer> queryVector,
@@ -262,7 +270,7 @@ public class RetrievalEvaluator extends CasConsumer_ImplBase {
    * change to token list to a term frequency map
    * 
    * @param list
-   * @return
+   * @return map
    */
   private HashMap<String, Integer> tokenList2Map(ArrayList<Token> list) {
     HashMap<String, Integer> map = new HashMap<String, Integer>();
@@ -276,7 +284,7 @@ public class RetrievalEvaluator extends CasConsumer_ImplBase {
    * get the position of the relevant answer in the list
    * 
    * @param list
-   * @return
+   * @return position
    */
   private int getPosition(ArrayList<Integer> list) {
     int pos = 0;
@@ -292,7 +300,7 @@ public class RetrievalEvaluator extends CasConsumer_ImplBase {
    * 
    * @param similarities
    * @param position
-   * @return
+   * @return rank
    */
   private int getRank(ArrayList<Double> list, int position) {
     double temp = list.get(position);
