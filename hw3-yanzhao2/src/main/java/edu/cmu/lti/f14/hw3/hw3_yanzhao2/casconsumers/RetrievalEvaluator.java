@@ -34,8 +34,7 @@ public class RetrievalEvaluator extends CasConsumer_ImplBase {
   public ArrayList<Integer> rankList;
 
   /**
-   * dictionary of term frequency hashmap, each set of query and its answers are stored in a single
-   * list
+   * dictionary of term frequency hashmap
    **/
   public ArrayList<ArrayList<HashMap<String, Integer>>> dic;
 
@@ -48,7 +47,9 @@ public class RetrievalEvaluator extends CasConsumer_ImplBase {
   /** output file name **/
   public String fileName;
   
-  
+  /**
+   * initialize the parameter.
+   */
 		
 	public void initialize() throws ResourceInitializationException {
 
